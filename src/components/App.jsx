@@ -2,14 +2,13 @@
 import { PhoneBook } from './PhoneBook';
 import { Filter } from './Filter';
 import { ContactList } from './ContactList';
-import { nanoid } from 'nanoid';
+// import { nanoid } from 'nanoid';
 import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import {
-  addContactAction,
-  changeFilterAction,
-  deleteAction,
-} from 'redux/phonebook/action';
+import { useSelector } from 'react-redux';
+import // addContactAction,
+// changeFilterAction,
+// deleteAction,
+'redux/phonebook/action';
 
 const App = () => {
   // const [contacts, setContacts] = useState(init);
@@ -26,23 +25,23 @@ const App = () => {
   // ];
   // }
 
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const contacts = useSelector(state => state.contacts);
-  const filter = useSelector(state => state.filter);
+  // const filter = useSelector(state => state.filter);
 
   useEffect(() => {
     localStorage.setItem('contacts', JSON.stringify(contacts));
   }, [contacts]);
 
-  const handleAddContact = (name, number) => {
-    if (contacts.some(contact => contact.name === name)) {
-      return alert(`${name} is already in contacts `);
-    }
-    dispatch(addContactAction({ name, number, id: nanoid() }));
-    // setContacts(prevState => {
-    //   return [...prevState, { name, number, id: nanoid() }];
-    // });
-  };
+  // const handleAddContact = (name, number) => {
+  //   if (contacts.some(contact => contact.name === name)) {
+  //     return alert(`${name} is already in contacts `);
+  //   }
+  //   dispatch(addContactAction({ name, number, id: nanoid() }));
+  //   // setContacts(prevState => {
+  //   //   return [...prevState, { name, number, id: nanoid() }];
+  //   // });
+  // };
 
   // const onFilterName = event => {
   //   dispatch(changeFilterAction(event.target.value));
@@ -50,18 +49,18 @@ const App = () => {
   //   // setFilter(value);
   // };
 
-  const onDeleteContact = id => {
-    dispatch(deleteAction(id));
-    // setContacts(prevState => {
-    //   return prevState.filter(item => item.id !== id);
-    // });
-  };
+  // const onDeleteContact = id => {
+  //   dispatch(deleteAction(id));
+  //   // setContacts(prevState => {
+  //   //   return prevState.filter(item => item.id !== id);
+  //   // });
+  // };
 
-  const filteredContacts = () => {
-    return contacts.filter(contact =>
-      contact.name.toLowerCase().includes(filter.toLowerCase())
-    );
-  };
+  // const filteredContacts = () => {
+  //   return contacts.filter(contact =>
+  //     contact.name.toLowerCase().includes(filter.toLowerCase())
+  //   );
+  // };
 
   return (
     <div
@@ -79,9 +78,9 @@ const App = () => {
       }}
     >
       <PhoneBook
-        // onFilterName={onFilterName}
-        filter={filter}
-        handleAddContact={handleAddContact}
+      // onFilterName={onFilterName}
+      // filter={filter}
+      // handleAddContact={handleAddContact}
       />
       <h2> Contacts</h2>
       <Filter
@@ -90,8 +89,8 @@ const App = () => {
       />
 
       <ContactList
-        filteredContacts={filteredContacts()}
-        onDeleteContact={onDeleteContact}
+      // filteredContacts={filteredContacts()}
+      // onDeleteContact={onDeleteContact}
       />
     </div>
   );

@@ -1,13 +1,24 @@
 import { useState } from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
+import { addContactAction } from 'redux/phonebook/action';
+import { useDispatch, useSelector } from 'react-redux';
+import { nanoid } from '@reduxjs/toolkit';
 
-export function PhoneBook({ handleAddContact }) {
+export function PhoneBook() {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
+  const dispatch = useDispatch();
+  const contacts = useSelector(state => state.contacts);
 
-  // onChangeName = event => {
-  //   this.setState({ [event.target.name]: event.target.value });
-  // };
+  const handleAddContact = (name, number) => {
+    if (contacts.some(contact => contact.name === name)) {
+      return alert(`${name} is already in contacts `);
+    }
+    dispatch(addContactAction({ name, number, id: nanoid() }));
+    // setContacts(prevState => {
+    //   return [...prevState, { name, number, id: nanoid() }];
+    // });
+  };
 
   const onChangeName = event => {
     const { value } = event.target;
@@ -61,6 +72,6 @@ export function PhoneBook({ handleAddContact }) {
   );
 }
 
-PhoneBook.propTypes = {
-  handleAddContact: PropTypes.func.isRequired,
-};
+// PhoneBook.propTypes = {
+//   handleAddContact: PropTypes.func.isRequired,
+// };
