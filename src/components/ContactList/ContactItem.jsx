@@ -1,5 +1,4 @@
 import { useDispatch } from 'react-redux';
-// import { deleteAction } from 'redux/phonebook/action';
 import { onDeleteContactAction } from 'redux/phonebook/phonebookSlice';
 
 const ContactItem = ({ id, name, number }) => {
