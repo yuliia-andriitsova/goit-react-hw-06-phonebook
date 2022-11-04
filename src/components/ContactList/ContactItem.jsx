@@ -1,15 +1,12 @@
-// import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
-import { deleteAction } from 'redux/phonebook/action';
+// import { deleteAction } from 'redux/phonebook/action';
+import { onDeleteContactAction } from 'redux/phonebook/phonebookSlice';
 
 const ContactItem = ({ id, name, number }) => {
   const dispatch = useDispatch();
 
   const onDeleteContact = id => {
-    dispatch(deleteAction(id));
-    // setContacts(prevState => {
-    //   return prevState.filter(item => item.id !== id);
-    // });
+    dispatch(onDeleteContactAction(id));
   };
 
   return (
@@ -23,7 +20,3 @@ const ContactItem = ({ id, name, number }) => {
   );
 };
 export { ContactItem };
-
-// ContactItem.propTypes = {
-//   DeleteContact: PropTypes.func,
-// };

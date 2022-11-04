@@ -1,9 +1,9 @@
-// import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
-import { changeFilterAction } from 'redux/phonebook/action';
+import { changeFilterAction } from 'redux/phonebook/filterSlice';
+import { getFilter } from 'redux/phonebook/selectors';
 
 export function Filter() {
-  const filter = useSelector(state => state.filter);
+  const filter = useSelector(getFilter);
   const dispatch = useDispatch();
   const onFilterName = event => {
     dispatch(changeFilterAction(event.target.value));
@@ -16,8 +16,3 @@ export function Filter() {
     </>
   );
 }
-
-// Filter.propTypes = {
-//   filter: PropTypes.string.isRequired,
-//   onFilterName: PropTypes.func.isRequired,
-// };
